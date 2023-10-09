@@ -3,17 +3,27 @@ In this project, we implement a simple shell that functions in a similar way to 
 The directory contains several C source files and one header file.
 
 
+
+
+
 `main.h`<br>
 This header file contains all the function prototypes of functions used across all the source files in this directory.
+
+
+
+
 
 `getline.c`<br>
 This source file contains a custom implementation of the `getline` function provided in the C standard library.<br>
 `_getline` reads an entire line of text from an input stream. On success, it returns the number of characters read, otherwise it returns `-1` on failure or upon encountering the `EOF`.<br>
 The function prototype is:
 ```
-int _getline(const char **lineptr, int *n, FILE *stream);
+ssize_t _getline(const char **lineptr, size_t *n, FILE *stream);
 ```
 The function assigns the address of the buffer createdto hold the line that has been read to`lineptr`. `n` indicates the size of the buffer currently pointed to by `lineptr` at the time of the function call. `stream` is a pointer to a stream of the `FILE` structure. This can either be the `stdin` or a text file.
+
+
+
 
 
 `strtok.c`<br>
@@ -25,6 +35,9 @@ char *_strtok(const char *str, const char *delim);
 ```
 On the first call of `_strtok`, `str` must be a valid pointer (non-null) while on subsequent calls of the function, it should be `NULL`.<br>
 `delim` is a string specifying the individual bytes that are delimiters in the initial string passed into the function. `_strtok` maintains an internal state of `str` that was passed into the function at the first call.
+
+
+
 
 
 `realloc.c`<br>
@@ -39,6 +52,9 @@ If `ptr` is null or `new_size` is `0`, `_realloc` will be equivalent to `malloc`
 If `new_size` is `0`, `_realloc` will be equivalent to `free`.
 
 
+
+
+
 `memcpy.c`<br>
 This source file contains a custom implementation of the `memcpy` function provided int the C standard library.<br>
 `_memcpy` copies each byte from on memory block to another memory block.<br>
@@ -49,6 +65,9 @@ void _memcpy(char *dest, const char *src);
 `dest` is a pointer to the memory block where eacah byte contained in `src` is to be copied to.
 
 
+
+
+
 `strchr.c`<br>
 This source file contains a custom implementation of the `strchr` function provided in the C standard library.<br>
 `_strchr` finds the occurrence of a character in a given string. On success, it returns the address of the character in the string, otherwise it returns `NULL` if no match has been found.
@@ -57,6 +76,9 @@ The function prototype is:
 char *_strchr(const char *str, char c);
 ```
 `str` is the string that is being parsed in search of an occurrence of the character `c`.
+
+
+
 
 
 `strdup.c`
