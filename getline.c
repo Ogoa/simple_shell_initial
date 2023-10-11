@@ -8,12 +8,12 @@
  * of the line that has been read
  * @n: Pointer to the number of bytes of the memory block 'lineptr'
  * currently points to at the time of function call, if any
- * @stream: Pointer to a stream of type 'FILE' structure
+ * @fd: The file descriptor of the source
  *
  * Return: The number of charcters read from a line
  * Otherwise -1 on failure or when EOF is encountered
  */
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
+ssize_t _getline(char **lineptr, size_t *n, int fd)
 {
 	char *buffer;
 	ssize_t total_chars = 0; /* Number of characters read */
@@ -27,7 +27,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (buffer == NULL)
 			return (-1);
 	}
-	while ((c = (char)fgetc(stream)) != EOF)
+	while ((c = (char)_fgetc(fd)) != EOF)
 	{
 		if (i >= *n - 1) /* Check if buffer is full to prevent an overflow */
 		{
@@ -44,5 +44,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		}
 		i++;
 	}
+	free(buffer);
 	return (-1);
 }
