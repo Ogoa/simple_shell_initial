@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _strcmp - Compares two strings to evaluate if they are similat
+ * _strcmp - Compares two strings to evaluate if they are similar
  * @str1: The first string
  * @str2: The second string
  *

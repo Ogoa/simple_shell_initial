@@ -16,9 +16,8 @@
 ssize_t _getline(char **lineptr, size_t *n, int fd)
 {
 	char *buffer;
-	ssize_t total_chars = 0; /* Number of characters read */
 	char c; /* Holds each character read from the stream */
-	int i = 0;
+	size_t i = 0;
 
 	if (*lineptr == NULL || *n == 0)
 	{
@@ -32,6 +31,7 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
 		if (i >= *n - 1) /* Check if buffer is full to prevent an overflow */
 		{
 			buffer = _realloc(buffer, *n, *n * 2);
+			*n = *n * 2;
 			if (buffer == NULL)
 				return (-1);
 		}

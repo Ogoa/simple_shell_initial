@@ -29,6 +29,7 @@ int get_full_path(char **full_path, size_t *n, const char *file,
 		if (i >= *n - 1)
 		{
 			*full_path = _realloc(*full_path, *n, *n * 2);
+			*n = *n * 2;
 			if (*full_path == NULL)
 				return (1);
 		}
@@ -43,6 +44,7 @@ int get_full_path(char **full_path, size_t *n, const char *file,
 		if (i >= *n - 1)
 		{
 			*full_path = _realloc(*full_path, *n, *n * 2);
+			*n = *n * 2;
 			if (*full_path == NULL)
 				return (1);
 		}

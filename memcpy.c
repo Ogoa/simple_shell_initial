@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _memcpy - Copies the contents of one memry block to another memory block
+ * _memcpy - Copies the contents of one memory block to another memory block
  * @dest: Pointer to the memory block where the bytes are being copied to
  * @src: Pointer to the memory block whose bytes are being copied to 'dest'
  * @nmemb: The number of bytes to copy from 'src' to 'dest'

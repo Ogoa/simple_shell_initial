@@ -12,7 +12,7 @@
  */
 char *_getenv(const char *name)
 {
-	extern char **environ;
+	/* extern char **environ; */
 	char *env_variable;
 	char *env_name;
 	char *env_value;
