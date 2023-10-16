@@ -129,6 +129,47 @@ Function Prototype:
 ```
 int get_full_path(char **full_path, size_t *n, const char *file, const char *path_dir);
 ```
+
+`full_path` is the buffer to store address of the string with the full directory path
+`n`is the size of the buffer in bytes
+`file` is the name of the file
+`path_dir` is the PATH directory
+
+
+`print_str.c`<br>
+This source file contains the implementation of the `print` function, which is used to print a string.
+`print` Prints a string. The function returns the number of characters printed. Returns 0 on failure, which may occur if the input string is NULL.<br>
+
+Function Prototype:
+```
+int print(const char *str);
+```
+`str` is the string to be printed.
+
+
+`shell2.c`
+This source file contains the implementation of the simple shell program in the `main` function.
+
+Function Prototypes:
+1. `int main(int argc, char **argv, char **envp)` - The main function for executing the simple shell program.
+2. `int check_builtin(char ***argv, char **full_path)` - Executes the `builtins` function to check if a command is a built-in command.
+3. `int get_program(char **path, char **full_path, size_t *m, char **command)` - Evaluates if an executable function for the given shell command exists.
+4. `void tokenize_args(char **command, char ***argv, int *argc)` - Extracts tokens from the command passed to the shell.
+5. `int free_arr(char **arr)` - Frees memory occupied by an array of arrays.
+
+**Description:**
+The `shell2.c` file contains the implementation of a simple shell program. It reads and executes shell commands. The program continuously prompts for input, reads the command, and executes it.
+
+The `main` function is the entry point of the shell. It reads and processes user input, tokenizes the input, and executes commands. It can also handle built-in commands like "exit" and "env."
+
+`check_builtin` checks if a command is a built-in command by calling the `builtins` function.
+
+`get_program` evaluates if an executable function for a given shell command exists.
+
+`tokenize_args` is responsible for tokenizing user input.
+
+`free_arr` frees memory occupied by an array of arrays.
+=======
 `full_path` is the buffer to store address of the string with the full directory path <br>
 `n`is the size of the buffer in bytes<br>
 `file` is the name of the file<br>
@@ -145,3 +186,4 @@ The function prototype is:
 char *_getenv(const char *name);
 ```
 `str` is the NAME of the environment variable you want to find.
+
