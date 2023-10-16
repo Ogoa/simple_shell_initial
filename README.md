@@ -96,7 +96,7 @@ char *_strdup(const char *str);
 This source file contains the implementation of the `putchar` function.  
 `_putchar` writes an individual character to the standard output on success.  
 The function prototype is:
-
+```
 int _putchar(char c);
-
+```
 `c` is the character literal to be printed.  
