@@ -88,4 +88,15 @@ The function prototype is:
 ```
 char *_strdup(const char *str);
 ```
-`str` is the string that is to be duplicated.
+`str` is the string that is to be duplicated.  
+
+
+
+`_putchar.c`  
+This source file contains the implementation of the `putchar` function.  
+`_putchar` writes an individual character to the standard output on success.  
+The function prototype is:
+
+int _putchar(char c);
+
+`c` is the character literal to be printed.  
