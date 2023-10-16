@@ -89,3 +89,15 @@ The function prototype is:
 char *_strdup(const char *str);
 ```
 `str` is the string that is to be duplicated.
+
+
+
+
+`getenv.c`
+This source file contains a custom implementation of the `getenv` function provided in the C standard library.<br>
+`_getenv` finds the specified variable among the set environment variables and returns it in the `name=value` format.<br>
+The function prototype is:
+```
+char *_getenv(const char *name);
+```
+`str` is the NAME of the environment variable you want to find.
