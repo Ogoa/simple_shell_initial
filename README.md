@@ -88,16 +88,48 @@ The function prototype is:
 ```
 char *_strdup(const char *str);
 ```
-`str` is the string that is to be duplicated.
+
+`str` is the string that is to be duplicated.  
 
 
 
-
-`getenv.c`
-This source file contains a custom implementation of the `getenv` function provided in the C standard library.<br>
-`_getenv` finds the specified variable among the set environment variables and returns it in the `name=value` format.<br>
+`_putchar.c`<br>
+This source file contains the implementation of the `putchar` function provided in the C standard library.<br>  
+`_putchar` writes an individual character to the standard output on success.<br>
 The function prototype is:
 ```
-char *_getenv(const char *name);
+int _putchar(char c);
 ```
-`str` is the NAME of the environment variable you want to find.
+`c` is the character literal to be printed.  
+
+`builtin.c`<br>
+This source file contains the implementation of the `builtins` function, which handles the implementation of shell built-in functions.<br>
+`builtins` handles the implementation of shell built-in functions
+
+Function Prototype:
+```
+int builtins(char **argv);
+```
+`**argv` is the pointer to the array of argument strings
+
+`fgetc.c`<br>
+This source file contains the implementation of the `_fgetc` function, which reads a character from a file.<br>
+`_fgetc` Read a character from a fileThe function returns the character read as an integer. It returns EOF (End of File) if no character has been read, or if there was an error in reading.<br>
+
+Function Prototype:
+```
+int _fgetc(int fd);
+```
+`fd` is the file descriptor
+
+`get_path.c`<br>
+This source file contains the implementation of the `get_full_path` function, which creates the absolute path for a file based on the given file name and PATH directory.<br>
+
+Function Prototype:
+```
+int get_full_path(char **full_path, size_t *n, const char *file, const char *path_dir);
+```
+`full_path` is the buffer to store address of the string with the full directory path
+`n`is the size of the buffer in bytes
+`file` is the name of the file
+`path_dir` is the PATH directory
