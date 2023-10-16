@@ -88,6 +88,7 @@ The function prototype is:
 ```
 char *_strdup(const char *str);
 ```
+
 `str` is the string that is to be duplicated.  
 
 
