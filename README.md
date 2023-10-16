@@ -129,6 +129,7 @@ Function Prototype:
 ```
 int get_full_path(char **full_path, size_t *n, const char *file, const char *path_dir);
 ```
+
 `full_path` is the buffer to store address of the string with the full directory path
 `n`is the size of the buffer in bytes
 `file` is the name of the file
@@ -168,3 +169,21 @@ The `main` function is the entry point of the shell. It reads and processes user
 `tokenize_args` is responsible for tokenizing user input.
 
 `free_arr` frees memory occupied by an array of arrays.
+=======
+`full_path` is the buffer to store address of the string with the full directory path <br>
+`n`is the size of the buffer in bytes<br>
+`file` is the name of the file<br>
+`path_dir` is the PATH directory<br>
+
+
+
+
+`getenv.c`
+This source file contains a custom implementation of the `getenv` function provided in the C standard library.<br>
+`_getenv` finds the specified variable among the set environment variables and returns it in the `name=value` format.<br>
+The function prototype is:
+```
+char *_getenv(const char *name);
+```
+`str` is the NAME of the environment variable you want to find.
+
