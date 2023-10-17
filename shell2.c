@@ -13,11 +13,11 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv,
 {
 	int my_argc = 0;
 	char **my_argv;
-	char *command; /* The command fed to the shell */
+	char *command = NULL; /* The command fed to the shell */
 	size_t n = 0; /* Size, in bytes, of the 'command' buffer */
 	char *path;
 	pid_t pid;
-	char *full_path;
+	char *full_path = NULL;
 	size_t m = 0;
 	int flag = 0;
 	int wstatus;
@@ -27,7 +27,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv,
 	{
 		if (interact)
 			print("($) ");
-		if (getline(&command, &n, stdin) == -1)
+		if (_getline(&command, &n, STDIN_FILENO) == -1)
 			perror("getline");
 		tokenize_args(&command, &my_argv, &my_argc);
 		path = _getenv("PATH"); /* Extract the PATH directories */
@@ -37,12 +37,12 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv,
 		if (flag)
 			pid = fork();
 		else
-			perror("./hsh");
+			perror("not found");
 		if (pid == 0)
 		{
 			if (execve(full_path, my_argv, envp) == -1)
 			{
-				perror("./hsh");
+				perror("execve");
 				return (-1);
 			}
 		}
@@ -50,13 +50,12 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv,
 		{
 			wait(&wstatus);
 		}
-		free(path);
 		free_arr(my_argv);
 		free(full_path);
 		if (!interact)
 			break;
 	}
-	/*free_arr(envp);*/
+	free_arr(envp);
 	return (0);
 }
 
@@ -107,12 +106,8 @@ int get_program(char **path, char **full_path, size_t *m, char **command)
 		if (get_full_path(full_path, m, *command, path_token) == 0)
 		{
 			if (stat(*full_path, &st) == 0)
-			{
-				free(path_token);
 				return (1);
-			}
 		}
-		free(path_token);
 		path_token = _strtok(NULL, delim);
 	}
 	return (0);
@@ -143,7 +138,6 @@ void tokenize_args(char **command, char ***argv, int *argc)
 	while (token)
 	{
 		(*argc)++;
-		free(token);
 		token = _strtok(NULL, delim);
 	}
 	*argv = (char **)malloc(sizeof(char *) * (*argc + 1));
@@ -155,7 +149,6 @@ void tokenize_args(char **command, char ***argv, int *argc)
 	while (token)
 	{
 		(*argv)[(*argc)++] = _strdup(token);
-		free(token);
 		token = _strtok(NULL, delim);
 	}
 	(*argv)[*argc] = NULL;
