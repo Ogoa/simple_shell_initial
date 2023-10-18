@@ -46,5 +46,7 @@ char *_getenv(const char *name)
 		}
 		i++;
 	}
+	free(env_name);
+	free(env_value);
 	return (NULL);
 }
