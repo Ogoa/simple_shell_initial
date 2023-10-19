@@ -100,6 +100,11 @@ int get_program(char **path, char **full_path, size_t *m, char **command)
 	if (*path == NULL || path == NULL || *command == NULL || command == NULL)
 		return (0);
 	*full_path = NULL;
+	if (stat(*command, &st) == 0)
+	{
+		*full_path = _strdup(*command);
+		return (1);
+	}
 	path_token = _strtok(*path, delim);
 	while (path_token)
 	{
