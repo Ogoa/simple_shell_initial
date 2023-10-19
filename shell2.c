@@ -27,7 +27,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv,
 	{
 		if (interact)
 			print("($) ");
-		if (_getline(&command, &n, STDIN_FILENO) == -1)
+		if (getline(&command, &n, stdin) == -1)
 			perror("getline");
 		tokenize_args(&command, &my_argv, &my_argc);
 		path = _getenv("PATH"); /* Extract the PATH directories */
@@ -72,7 +72,7 @@ int check_builtin(char ***argv, char **full_path)
 		return (0);
 	if (builtins(*argv))
 	{
-		free_arr(*argv);
+		/* free_arr(*argv); */
 		if (*full_path)
 			free(*full_path);
 		return (1);
